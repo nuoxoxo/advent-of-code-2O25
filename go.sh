@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="https://adventofcode.com/2024/day/$1/input"
+URL="https://adventofcode.com/2025/day/$1/input"
 
 if [ $1 -gt 0 ] && [ $1 -lt 10 ]; then
     #FILENAME="0$1.0"
