@@ -6,3 +6,4 @@
 alt/*
 !alt/*.cc
 !alt/*.go
+!alt/*.py
