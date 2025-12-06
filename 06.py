@@ -1,62 +1,43 @@
-T = open(0).read().splitlines()
+LINES = open(0).read().splitlines()
 def p2():
-    A = [_ for _ in T]
-    #for a in A:print(a)
+    A = [_ for _ in LINES]
     ops = A.pop().split()
-    #print(ops)
     R,C=len(A),len(A[0])
     COLS = [0]*C
     for c in range(C):
         for r in range(R):
-            #print(A[r][c])
-            if A[r][c] == ' ':
-                continue
-            else:
+            if A[r][c] != ' ':
                 COLS[c] = COLS[c] * 10 + int(A[r][c])
-        #print(COLS)
-    #print(COLS)
-    cal = [_ for _ in ops]
-    for i in range(len(cal)):
-        if cal[i] == '+': cal[i] = 0
-        else: cal[i] = 1
+    res = [0 if op=='+' else 1 for op in ops]
     i = 0
     c = 0
-    #while True:
     for i in range(len(ops)):
-        #print(cal,i,c)
-        if ops[i]=='+':
+        if ops[i] == '+':
             while c < C and COLS[c] != 0:
-                cal[i] += COLS[c]
+                res[i] += COLS[c]
                 c += 1
             if c < C and COLS[c] == 0:
                 c += 1
-        elif ops[i]=='*':
+        elif ops[i] == '*':
             while c < C and COLS[c] != 0:
-                cal[i] *= COLS[c]
+                res[i] *= COLS[c]
                 c += 1
             if c < C and COLS[c] == 0:
                 c += 1
-    print(sum(cal))
-    assert sum(cal) in (7450962489289,3263827)
+    print(sum(res))
+    assert sum(res) in (7450962489289,3263827)
+
 def p1():
-    A = [_ for _ in T]
-    A = [_.split() for _ in A]
+    A = [_.split() for _ in LINES]
     ops = A.pop()
-    cal = [_ for _ in ops]
-    for i in range(len(cal)):
-        if cal[i] == '+': cal[i] = 0
-        else: cal[i] = 1
+    res = [0 if op=='+' else 1 for op in ops]
     for i,op in enumerate(ops):
-        #print(i,op)
         if op == '+':
-            #print('+/')
-            for j in range(len(A)):
-                cal[i] += int(A[j][i])
+            for j in range(len(A)): res[i] += int(A[j][i])
         else:
-            for j in range(len(A)):
-                cal[i] *= int(A[j][i])
-    #print(cal)
-    print(sum(cal))#"""
-    assert sum(cal) in (4405895212738,4277556)
+            for j in range(len(A)): res[i] *= int(A[j][i])
+    print(sum(res))
+    assert sum(res) in (4405895212738,4277556)
+
 p1()
 p2()
