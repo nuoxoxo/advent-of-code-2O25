@@ -2,3 +2,9 @@
 !.gitignore
 !*.py
 !*.sh
+!alt
+alt/*
+!alt/*.cc
+!alt/*.go
+!alt/*.py
+*copy*
